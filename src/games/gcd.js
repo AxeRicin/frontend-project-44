@@ -40,7 +40,7 @@ const getTrueAnswer = (example) => {
 
 const dcdGame = () => {
   const name = cli.seyHello();
-  cli.print('What is the result of the expression?');
+  cli.print('Find the greatest common divisor of given numbers.');
   engin(name, getExample, getTrueAnswer);
 };
 
