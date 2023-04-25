@@ -35,7 +35,7 @@ const calc = (operand1, operator, operand2) => {
 const getTrueAnswer = (example) => {
   const [operand1, operand2, operator] = example.split(' ');
 
-  return calc(operand1, operand2, operator);
+  return `${calc(operand1, operand2, operator)}`;
 };
 
 const calcGame = () => {

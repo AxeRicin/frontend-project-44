@@ -2,16 +2,12 @@ import * as cli from './cli.js';
 
 export const getRandomNumber = (maxNum = 100) => Math.floor(Math.random() * maxNum + 1);
 
-export default (name, gameRule, getTrueAnswer, convertAnswerToNumber = true) => {
+export default (name, gameRule, getTrueAnswer) => {
   for (let i = 0; i < 3; i += 1) {
     const rule = gameRule();
     const answerCorrect = getTrueAnswer(rule);
     cli.print(`Question: ${rule}`);
-    let answer = cli.askQuestion('Your answer: ');
-
-    if (convertAnswerToNumber) {
-      answer = Number.isNaN(Number(answer)) ? answer : Number(answer);
-    }
+    const answer = cli.askQuestion('Your answer: ');
 
     if (answer === answerCorrect) {
       cli.print('Correct!');
