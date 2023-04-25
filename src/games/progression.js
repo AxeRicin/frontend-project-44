@@ -33,7 +33,7 @@ const getTrueAnswer = (example) => {
     if (Number.isNaN(secondNum)) {
       firstNum = NaN;
     }
-    if (firstNum !== secondNum && firstNum !== 0 && secondNum !== 0 && !Number.isNaN(secondNum)) {
+    if (firstNum !== secondNum && secondNum !== 0 && !Number.isNaN(secondNum)) {
       i = exampleArr.length;
     }
   }
