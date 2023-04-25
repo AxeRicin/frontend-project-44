@@ -44,6 +44,4 @@ const dcdGame = () => {
   engin(name, getExample, getTrueAnswer);
 };
 
-dcdGame();
-
 export default dcdGame;
