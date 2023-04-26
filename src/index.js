@@ -2,17 +2,18 @@ import * as cli from './cli.js';
 
 export const getRandomNumber = (maxNum = 100) => Math.floor(Math.random() * maxNum + 1);
 
-export default (name, gameRule, getTrueAnswer) => {
+export default (description, gameRule) => {
+  const name = cli.seyHello();
+  cli.print(description);
   for (let i = 0; i < 3; i += 1) {
-    const rule = gameRule();
-    const answerCorrect = getTrueAnswer(rule);
-    cli.print(`Question: ${rule}`);
+    const [example, TrueAnswer] = gameRule();
+    cli.print(`Question: ${example}`);
     const answer = cli.askQuestion('Your answer: ');
 
-    if (answer === answerCorrect) {
+    if (answer === TrueAnswer) {
       cli.print('Correct!');
     } else {
-      cli.print(`'${answer}' is wrong answer ;(. Correct answer was '${answerCorrect}'.`);
+      cli.print(`'${answer}' is wrong answer ;(. Correct answer was '${TrueAnswer}'.`);
       return cli.print(`Let's try again, ${name}`);
     }
   }

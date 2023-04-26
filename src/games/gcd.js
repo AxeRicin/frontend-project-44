@@ -1,12 +1,7 @@
 import * as cli from '../cli.js';
 import engin, { getRandomNumber } from '../index.js';
 
-const getExample = () => {
-  const num1 = getRandomNumber();
-  const num2 = getRandomNumber();
 
-  return `${num1} ${num2}`;
-};
 
 const findMaxDivisor = (coll1, coll2) => {
   let acc = 0;
@@ -38,10 +33,16 @@ const getTrueAnswer = (example) => {
   return findMaxDivisor(collDevisorOperand1, collDevisorOperand2);
 };
 
+const getExample = () => {
+  const num1 = getRandomNumber();
+  const num2 = getRandomNumber();
+  const example = `${num1} ${num2}`;
+
+  return [example, getTrueAnswer(example)];
+};
+
 const dcdGame = () => {
-  const name = cli.seyHello();
-  cli.print('Find the greatest common divisor of given numbers.');
-  engin(name, getExample, getTrueAnswer);
+  engin('Find the greatest common divisor of given numbers.', getExample);
 };
 
 export default dcdGame;

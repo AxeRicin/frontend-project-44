@@ -16,10 +16,10 @@ const getExample = () => {
     example.push(lastNumber + progression);
   }
   example[positionUnknown] = '..';
-  return example.join(' ');
+  return [example.join(' '), `${progression}`];
 };
 
-const getTrueAnswer = (example) => {
+/* const getTrueAnswer = (example) => {
   const exampleArr = example.split(' ');
   let firstNum = exampleArr[0];
   let secondNum = 0;
@@ -38,12 +38,10 @@ const getTrueAnswer = (example) => {
     }
   }
   return `${secondNum - firstNum}`;
-};
+}; */
 
 const gameProgression = () => {
-  const name = cli.seyHello();
-  cli.print('What number is missing in the progression?');
-  engin(name, getExample, getTrueAnswer);
+  engin('What number is missing in the progression?', getExample);
 };
 
 export default gameProgression;

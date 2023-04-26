@@ -1,4 +1,3 @@
-import * as cli from '../cli.js';
 import engin, { getRandomNumber } from '../index.js';
 
 const getOperator = (num) => {
@@ -10,13 +9,6 @@ const getOperator = (num) => {
     default:
       return '*';
   }
-};
-
-const getExample = () => {
-  const operand1 = getRandomNumber(50);
-  const operand2 = getRandomNumber(50);
-
-  return `${operand1} ${getOperator(getRandomNumber(3))} ${operand2}`;
 };
 
 const calc = (operand1, operator, operand2) => {
@@ -38,10 +30,16 @@ const getTrueAnswer = (example) => {
   return `${calc(operand1, operand2, operator)}`;
 };
 
+const getExample = () => {
+  const operand1 = getRandomNumber(50);
+  const operand2 = getRandomNumber(50);
+  const example = `${operand1} ${getOperator(getRandomNumber(3))} ${operand2}`;
+
+  return [example, getTrueAnswer(example)];
+};
+
 const calcGame = () => {
-  const name = cli.seyHello();
-  cli.print('What is the result of the expression?');
-  engin(name, getExample, getTrueAnswer);
+  engin('What is the result of the expression?', getExample);
 };
 
 export default calcGame;

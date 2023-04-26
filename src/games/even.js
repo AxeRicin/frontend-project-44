@@ -1,4 +1,3 @@
-import * as cli from '../cli.js';
 import engin, { getRandomNumber } from '../index.js';
 
 const checkingAnswerCorrect = (number) => {
@@ -8,10 +7,14 @@ const checkingAnswerCorrect = (number) => {
   return 'no';
 };
 
+const getExample = () => {
+  const example = getRandomNumber();
+
+  return [example, checkingAnswerCorrect(example)];
+};
+
 const evenGame = () => {
-  const name = cli.seyHello();
-  cli.print('Answer "yes" if the number is even, otherwise answer "no".');
-  engin(name, getRandomNumber, checkingAnswerCorrect, false);
+  engin('Answer "yes" if the number is even, otherwise answer "no".', getExample);
 };
 
 export default evenGame;
