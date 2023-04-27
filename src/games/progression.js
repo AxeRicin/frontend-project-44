@@ -1,4 +1,3 @@
-import * as cli from '../cli.js';
 import engin, { getRandomNumber } from '../index.js';
 
 const getMinMaxRandomNum = (min = 5, max = 16) => Math.floor(Math.random() * (max - min) + min);
@@ -18,27 +17,6 @@ const getExample = () => {
   example[positionUnknown] = '..';
   return [example.join(' '), `${progression}`];
 };
-
-/* const getTrueAnswer = (example) => {
-  const exampleArr = example.split(' ');
-  let firstNum = exampleArr[0];
-  let secondNum = 0;
-
-  for (let i = 1; i < exampleArr.length; i += 1) {
-    if (Number.isNaN(firstNum)) {
-      firstNum = Number(exampleArr[i]);
-    } else {
-      secondNum = Number(exampleArr[i]);
-    }
-    if (Number.isNaN(secondNum)) {
-      firstNum = NaN;
-    }
-    if (firstNum !== secondNum && secondNum !== 0 && !Number.isNaN(secondNum)) {
-      i = exampleArr.length;
-    }
-  }
-  return `${secondNum - firstNum}`;
-}; */
 
 const gameProgression = () => {
   engin('What number is missing in the progression?', getExample);

@@ -1,7 +1,4 @@
-import * as cli from '../cli.js';
 import engin, { getRandomNumber } from '../index.js';
-
-
 
 const findMaxDivisor = (coll1, coll2) => {
   let acc = 0;
