@@ -8,14 +8,16 @@ const getExample = () => {
   const startNumber = getRandomNumber(50);
   const progression = getRandomNumber(10);
   const positionUnknown = getMinMaxRandomNum(1, lengthProgression);
+  let answer = 0;
 
   example.push(startNumber);
   for (let i = 1; i <= lengthProgression - 1; i += 1) {
     const lastNumber = example[example.length - 1];
     example.push(lastNumber + progression);
   }
+  answer = example[positionUnknown];
   example[positionUnknown] = '..';
-  return [example.join(' '), `${progression}`];
+  return [example.join(' '), `${answer}`];
 };
 
 const gameProgression = () => {
