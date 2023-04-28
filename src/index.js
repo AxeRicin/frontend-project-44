@@ -14,7 +14,7 @@ export default (description, gameRule) => {
       cli.print('Correct!');
     } else {
       cli.print(`'${answer}' is wrong answer ;(. Correct answer was '${TrueAnswer}'.`);
-      return cli.print(`Let's try again, ${name}`);
+      return cli.print(`Let's try again, ${name}!`);
     }
   }
   return cli.print(`Congratulations, ${name}!`);
