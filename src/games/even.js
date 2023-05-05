@@ -1,20 +1,21 @@
-import engin, { getRandomNumber } from '../index.js';
+import engin from '../index.js';
+import getRandomNumber from '../randomNumber.js';
 
-const checkingAnswerCorrect = (number) => {
+const isAnswerCorrect = (number) => {
   if (number % 2 === 0) {
     return 'yes';
   }
   return 'no';
 };
 
-const getExample = () => {
-  const example = getRandomNumber();
+const getRoundData = () => {
+  const question = getRandomNumber();
 
-  return [example, checkingAnswerCorrect(example)];
+  return [question, isAnswerCorrect(question)];
 };
 
 const evenGame = () => {
-  engin('Answer "yes" if the number is even, otherwise answer "no".', getExample);
+  engin('Answer "yes" if the number is even, otherwise answer "no".', getRoundData);
 };
 
 export default evenGame;

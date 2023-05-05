@@ -1,45 +1,32 @@
-import engin, { getRandomNumber } from '../index.js';
+import engin from '../index.js';
+import getRandomNumber from '../randomNumber.js';
 
-const findMaxDivisor = (coll1, coll2) => {
-  let acc = 0;
+const getCorrectAnswer = (num1, num2) => {
+  let operand1 = num1;
+  let operand2 = num2;
 
-  for (let i = 0; i < coll1.length; i += 1) {
-    if (coll2.indexOf(coll1[i]) !== -1) {
-      acc = coll1[i];
+  while (operand1 !== operand2) {
+    if (operand1 > operand2) {
+      operand1 -= operand2;
+    }
+    if (operand2 > operand1) {
+      operand2 -= operand1;
     }
   }
 
-  return `${acc}`;
+  return `${operand1}`;
 };
 
-const getDivisorsOperand = (operand) => {
-  const collDevisorOperand = [];
-  for (let i = 0; i <= operand; i += 1) {
-    if (operand % i === 0) {
-      collDevisorOperand.push(i);
-    }
-  }
-  return collDevisorOperand;
-};
-
-const getTrueAnswer = (example) => {
-  const [operand1, operand2] = example.split(' ');
-  const collDevisorOperand1 = getDivisorsOperand(operand1);
-  const collDevisorOperand2 = getDivisorsOperand(operand2);
-
-  return findMaxDivisor(collDevisorOperand1, collDevisorOperand2);
-};
-
-const getExample = () => {
+const getRoundData = () => {
   const num1 = getRandomNumber();
   const num2 = getRandomNumber();
-  const example = `${num1} ${num2}`;
+  const question = `${num1} ${num2}`;
 
-  return [example, getTrueAnswer(example)];
+  return [question, getCorrectAnswer(num1, num2)];
 };
 
 const dcdGame = () => {
-  engin('Find the greatest common divisor of given numbers.', getExample);
+  engin('Find the greatest common divisor of given numbers.', getRoundData);
 };
 
 export default dcdGame;

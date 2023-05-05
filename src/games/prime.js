@@ -1,6 +1,7 @@
-import engin, { getRandomNumber } from '../index.js';
+import engin from '../index.js';
+import getRandomNumber from '../randomNumber.js';
 
-const getTrueAnswer = (example) => {
+const isCorrectAnswer = (example) => {
   let count = 0;
 
   if (example === 1) {
@@ -18,14 +19,14 @@ const getTrueAnswer = (example) => {
   return 'yes';
 };
 
-const getExample = () => {
-  const example = getRandomNumber();
+const getRoundData = () => {
+  const question = getRandomNumber();
 
-  return [example, getTrueAnswer(example)];
+  return [question, isCorrectAnswer(question)];
 };
 
 const primeGame = () => {
-  engin('Answer "yes" if given number is prime. Otherwise answer "no".', getExample);
+  engin('Answer "yes" if given number is prime. Otherwise answer "no".', getRoundData);
 };
 
 export default primeGame;

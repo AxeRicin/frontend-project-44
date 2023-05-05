@@ -5,15 +5,11 @@ const askQuestion = (question) => {
   return answer;
 };
 
-const print = (str) => {
-  console.log(str);
-};
-
 const seyHello = () => {
-  print('Welcome to the Brain Games!');
+  console.log('Welcome to the Brain Games!');
   const name = askQuestion('May I have your name? ');
-  print(`Hello, ${name}!`);
+  console.log(`Hello, ${name}!`);
   return name;
 };
 
-export { askQuestion, seyHello, print };
+export { askQuestion, seyHello };

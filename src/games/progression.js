@@ -1,27 +1,32 @@
-import engin, { getRandomNumber } from '../index.js';
+import engin from '../index.js';
+import getRandomNumber from '../randomNumber.js';
 
-const getMinMaxRandomNum = (min = 5, max = 16) => Math.floor(Math.random() * (max - min) + min);
+const getProgression = (startNumber, lengthProgression, progression) => {
+  const question = [];
+  question.push(startNumber);
 
-const getExample = () => {
-  const example = [];
-  const lengthProgression = getMinMaxRandomNum();
-  const startNumber = getRandomNumber(50);
-  const progression = getRandomNumber(10);
-  const positionUnknown = getMinMaxRandomNum(1, lengthProgression);
-  let answer = 0;
-
-  example.push(startNumber);
   for (let i = 1; i <= lengthProgression - 1; i += 1) {
-    const lastNumber = example[example.length - 1];
-    example.push(lastNumber + progression);
+    const lastNumber = question[question.length - 1];
+    question.push(lastNumber + progression);
   }
-  answer = example[positionUnknown];
-  example[positionUnknown] = '..';
-  return [example.join(' '), `${answer}`];
+
+  return question;
+};
+
+const getRoundData = () => {
+  const lengthProgression = getRandomNumber(5, 16);
+  const startNumber = getRandomNumber(1, 100);
+  const progression = getRandomNumber(1, 10);
+  const positionUnknown = getRandomNumber(1, lengthProgression);
+  const question = getProgression(startNumber, lengthProgression, progression);
+  const correctAnswer = question[positionUnknown];
+
+  question[positionUnknown] = '..';
+  return [question.join(' '), `${correctAnswer}`];
 };
 
 const gameProgression = () => {
-  engin('What number is missing in the progression?', getExample);
+  engin('What number is missing in the progression?', getRoundData);
 };
 
 export default gameProgression;

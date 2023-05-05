@@ -1,45 +1,35 @@
-import engin, { getRandomNumber } from '../index.js';
+import engin from '../index.js';
+import getRandomNumber from '../randomNumber.js';
 
 const getOperator = (num) => {
-  switch (num) {
-    case 1:
-      return '+';
-    case 2:
-      return '-';
-    default:
-      return '*';
-  }
+  const operators = ['+', '-', '*'];
+  return operators[num];
 };
 
-const calc = (operand1, operator, operand2) => {
+const getCorrectAnswer = (operand1, operator, operand2) => {
   switch (operator) {
     case '+':
-      return Number(operand1) + Number(operand2);
+      return `${Number(operand1) + Number(operand2)}`;
 
     case '-':
-      return Number(operand1) - Number(operand2);
+      return `${Number(operand1) - Number(operand2)}`;
 
     default:
-      return Number(operand1) * Number(operand2);
+      return `${Number(operand1) * Number(operand2)}`;
   }
 };
 
-const getTrueAnswer = (example) => {
-  const [operand1, operand2, operator] = example.split(' ');
+const getRoundData = () => {
+  const operand1 = getRandomNumber(1, 50);
+  const operand2 = getRandomNumber(1, 50);
+  const operator = getOperator(getRandomNumber(0, 2));
+  const question = `${operand1} ${operator} ${operand2}`;
 
-  return `${calc(operand1, operand2, operator)}`;
-};
-
-const getExample = () => {
-  const operand1 = getRandomNumber(50);
-  const operand2 = getRandomNumber(50);
-  const example = `${operand1} ${getOperator(getRandomNumber(3))} ${operand2}`;
-
-  return [example, getTrueAnswer(example)];
+  return [question, getCorrectAnswer(operand1, operator, operand2)];
 };
 
 const calcGame = () => {
-  engin('What is the result of the expression?', getExample);
+  engin('What is the result of the expression?', getRoundData);
 };
 
 export default calcGame;

@@ -1,21 +1,21 @@
 import * as cli from './cli.js';
 
-export const getRandomNumber = (maxNum = 100) => Math.floor(Math.random() * maxNum + 1);
-
-export default (description, gameRule) => {
+export default (description, getRoundData) => {
+  const numberRounds = 3;
   const name = cli.seyHello();
-  cli.print(description);
-  for (let i = 0; i < 3; i += 1) {
-    const [example, TrueAnswer] = gameRule();
-    cli.print(`Question: ${example}`);
+  console.log(description);
+  for (let i = 0; i < numberRounds; i += 1) {
+    const [question, correctAnswer] = getRoundData();
+    console.log(`Question: ${question}`);
     const answer = cli.askQuestion('Your answer: ');
 
-    if (answer === TrueAnswer) {
-      cli.print('Correct!');
+    if (answer === correctAnswer) {
+      console.log('Correct!');
     } else {
-      cli.print(`'${answer}' is wrong answer ;(. Correct answer was '${TrueAnswer}'.`);
-      return cli.print(`Let's try again, ${name}!`);
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${name}!`);
+      return;
     }
   }
-  return cli.print(`Congratulations, ${name}!`);
+  console.log(`Congratulations, ${name}!`);
 };
