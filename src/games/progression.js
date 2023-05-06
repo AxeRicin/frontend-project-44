@@ -16,7 +16,7 @@ const getProgression = (startNumber, lengthProgression, progression) => {
 const getRoundData = () => {
   const lengthProgression = getRandomNumber(5, 16);
   const startNumber = getRandomNumber(1, 100);
-  const progression = getRandomNumber(1, 1);
+  const progression = getRandomNumber(1, 10);
   const positionUnknown = getRandomNumber(0, lengthProgression - 1);
   const question = getProgression(startNumber, lengthProgression, progression);
   const correctAnswer = question[positionUnknown];
