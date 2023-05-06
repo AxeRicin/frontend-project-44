@@ -1,22 +1,16 @@
 import engin from '../index.js';
 import getRandomNumber from '../randomNumber.js';
 
-const isCorrectAnswer = (example) => {
-  let count = 0;
+const isCorrectAnswer = (num) => {
+  let answer = num === 1 ? 'no' : 'yes';
 
-  if (example === 1) {
-    return 'no';
-  }
-
-  for (let i = 1; i <= example; i += 1) {
-    if (example % i === 0) {
-      count += 1;
-    }
-    if (count > 2) {
-      return 'no';
+  for (let i = 2; i < num; i += 1) {
+    if (num % i === 0) {
+      answer = 'no';
+      break;
     }
   }
-  return 'yes';
+  return answer;
 };
 
 const getRoundData = () => {
