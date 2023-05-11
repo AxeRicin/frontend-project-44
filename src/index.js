@@ -1,21 +1,22 @@
-import * as cli from './cli.js';
+import askQuestion from './askQuestion.js';
 
 export default (description, getRoundData) => {
   const numberRounds = 3;
-  const name = cli.seyHello();
+  console.log('Welcome to the Brain Games!');
+  const name = askQuestion('May I have your name? ');
+  console.log(`Hello, ${name}!`);
   console.log(description);
   for (let i = 0; i < numberRounds; i += 1) {
     const [question, correctAnswer] = getRoundData();
     console.log(`Question: ${question}`);
-    const answer = cli.askQuestion('Your answer: ');
+    const answer = askQuestion('Your answer: ');
 
-    if (answer === correctAnswer) {
-      console.log('Correct!');
-    } else {
+    if (answer !== correctAnswer) {
       console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       console.log(`Let's try again, ${name}!`);
       return;
     }
+    console.log('Correct!');
   }
   console.log(`Congratulations, ${name}!`);
 };
