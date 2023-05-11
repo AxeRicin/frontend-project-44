@@ -1,13 +1,13 @@
-import engin from '../index.js';
+import startProgressionGame from '../index.js';
 import getRandomNumber from '../randomNumber.js';
 
-const getProgression = (startNumber, lengthProgression, progression) => {
+const getProgression = (startNumber, lengthProgression, stepProgression) => {
   const question = [];
   question.push(startNumber);
 
   for (let i = 1; i <= lengthProgression - 1; i += 1) {
     const lastNumber = question[question.length - 1];
-    question.push(lastNumber + progression);
+    question.push(lastNumber + stepProgression);
   }
 
   return question;
@@ -16,17 +16,15 @@ const getProgression = (startNumber, lengthProgression, progression) => {
 const getRoundData = () => {
   const lengthProgression = getRandomNumber(5, 16);
   const startNumber = getRandomNumber(1, 100);
-  const progression = getRandomNumber(1, 10);
-  const positionUnknown = getRandomNumber(0, lengthProgression - 1);
-  const question = getProgression(startNumber, lengthProgression, progression);
-  const correctAnswer = question[positionUnknown];
+  const stepProgression = getRandomNumber(1, 10);
+  const question = getProgression(startNumber, lengthProgression, stepProgression);
+  const positionUnknown = getRandomNumber(0, question.length - 1);
+  const correctAnswer = `${question[positionUnknown]}`;
 
   question[positionUnknown] = '..';
-  return [question.join(' '), `${correctAnswer}`];
+  return [question.join(' '), correctAnswer];
 };
 
-const gameProgression = () => {
-  engin('What number is missing in the progression?', getRoundData);
+export default () => {
+  startProgressionGame('What number is missing in the progression?', getRoundData);
 };
-
-export default gameProgression;
