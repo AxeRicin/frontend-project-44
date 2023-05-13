@@ -2,7 +2,7 @@ import startPrimeGame from '../index.js';
 import getRandomNumber from '../randomNumber.js';
 
 const isPrimeNumber = (num) => {
-  if (num === 0 || num === 1) {
+  if (num <= 1) {
     return false;
   }
 
