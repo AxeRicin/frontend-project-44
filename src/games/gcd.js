@@ -1,7 +1,7 @@
-import startDcdGame from '../index.js';
+import startGcdGame from '../index.js';
 import getRandomNumber from '../randomNumber.js';
 
-const getDcd = (num1, num2) => {
+const getGcd = (num1, num2) => {
   let operand1 = num1;
   let operand2 = num2;
 
@@ -20,12 +20,12 @@ const getDcd = (num1, num2) => {
 const getRoundData = () => {
   const num1 = getRandomNumber();
   const num2 = getRandomNumber();
-  const question = `${num1} ${num2}`;
-  const correctAnswer = `${getDcd(num1, num2)}`;
+  const question = String(num1).concat(' ', num2);
+  const correctAnswer = String(getGcd(num1, num2));
 
   return [question, correctAnswer];
 };
 
 export default () => {
-  startDcdGame('Find the greatest common divisor of given numbers.', getRoundData);
+  startGcdGame('Find the greatest common divisor of given numbers.', getRoundData);
 };
