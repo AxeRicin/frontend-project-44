@@ -19,7 +19,7 @@ const getRoundData = () => {
   const stepProgression = getRandomNumber(1, 10);
   const question = getProgression(startNumber, lengthProgression, stepProgression);
   const positionUnknown = getRandomNumber(0, question.length - 1);
-  const correctAnswer = `${question[positionUnknown]}`;
+  const correctAnswer = String(question[positionUnknown]);
 
   question[positionUnknown] = '..';
   return [question.join(' '), correctAnswer];
